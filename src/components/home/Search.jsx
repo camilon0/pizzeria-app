@@ -29,9 +29,7 @@ const Search = () => {
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
         />
-        <span className="input-group-text" id="basic-addon2">
-          @example.com
-        </span>
+        <span className="input-group-text" id="basic-addon2"></span>
       </div>
     </>
   );
