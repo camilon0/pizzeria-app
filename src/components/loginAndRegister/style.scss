@@ -1,93 +1,91 @@
-@media (max-width:600px) {
-    .login {
-        color: aliceblue;
-        width: 100vw;
-        height: 100vh;
+@media (max-width: 600px) {
+  .login {
+    color: aliceblue;
+    width: 100vw;
+    height: 100vh;
 
-        img {
-            position: absolute;
-            z-index: 1;
-            filter: brightness(0.5);
-
-        }
-
-        &__title {
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            color: white;
-            font-size: 20px;
-            position: relative;
-            z-index: 2;
-
-            h1 {
-                text-align: center;
-            }
-
-            p {
-                font-size: 15px;
-                text-align: left;
-            }
-
-            h2 {
-                text-align: left;
-            }
-
-        }
+    img {
+      position: absolute;
+      object-fit: cover;
+      z-index: 1;
+      filter: brightness(0.5);
+      width: 100%;
+      height: 100%;
     }
 
-    .form {
-        display: flex;
-        flex-direction: column;
-        justify-content: left;
-        padding: 30px;
-        gap: 20px;
-        position: relative;
-        z-index: 2;
+    &__title {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      color: white;
+      font-size: 20px;
+      position: relative;
+      z-index: 2;
 
-
-        input {
-            margin-left: 10px;
-            background-color: transparent;
-            border: none;
-        }
-
-        ::placeholder {
-            color: white;
-            font-size: 15px;
-        }
-
-        button {
-            border: none;
-            height: 35px;
-            margin-top: 20px;
-            border-radius: 5px;
-
-        }
-    }
-
-    .input {
-        border: none;
-        border-bottom: 1px solid white;
-        background-color: transparent;
-    }
-
-    .linkRegister{
-        position: relative;
-        z-index: 2;
-        font-size: 18px;
+      h1 {
         text-align: center;
-       
-        h5{
-            margin-top: 40px;
-            font-size: 12px;
-        }
-        .register{
-            background-color: transparent;
-            color: white;
-            font-size: 18px;
-            font-weight: 600; 
-           border: none;
-        }
+      }
+
+      p {
+        font-size: 15px;
+        text-align: left;
+      }
+
+      h2 {
+        text-align: left;
+      }
     }
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+    color: white;
+    input {
+      margin-left: 10px;
+      background-color: transparent;
+      border: none;
+    }
+
+    ::placeholder {
+      color: white;
+      font-size: 15px;
+    }
+
+    button {
+      border: none;
+      height: 35px;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+  }
+
+  .input {
+    border: none;
+    border-bottom: 1px solid white;
+    background-color: transparent;
+  }
+
+  .linkRegister {
+    position: relative;
+    z-index: 2;
+    font-size: 18px;
+    text-align: center;
+
+    h5 {
+      margin-top: 40px;
+      font-size: 12px;
+    }
+    .register {
+      background-color: transparent;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      border: none;
+    }
+  }
 }

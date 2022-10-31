@@ -1,46 +1,77 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { AppContext } from "../../routes/Router";
+import { userFind } from "../../services/user";
+import swal from "sweetalert";
+import "./style.scss";
 
 const Login = () => {
+  const { setUsuario } = useContext(AppContext);
+  const navigate = useNavigate();
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const changePage = () => {
+    navigate("/register");
+  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const userLogin = () => {
-    console.log('iniciar sesión')
-  }
+  const userLogin = async ({ email, password }) => {
+    const user = await userFind(email, password);
+    if (user.length && !user.error) {
+      swal("Bienvendio a la PizzeriApi, Que JSON desea llevar?");
+      setUsuario(...user);
+      console.log(...user);
+      navigate("/home");
+    }
+  };
 
   return (
     <div className="login">
-      <img src="https://hungryforhalaal.co.za/wp-content/uploads/2021/05/Pizza-Spots-Cape-Town-Hungry-for-Halaal.jpg" alt="Pizza" />
+      <img
+        src="https://hungryforhalaal.co.za/wp-content/uploads/2021/05/Pizza-Spots-Cape-Town-Hungry-for-Halaal.jpg"
+        alt="Pizza"
+      />
       <div className="login__title">
         <h1>PizzaApi</h1>
         <h2>Inicia sesión en tu cuenta</h2>
-        <p>Disfruta de la mejor pizza creada para las personas amantes del Código.</p>
+        <p>
+          Disfruta de la mejor pizza creada para las personas amantes del
+          Código.
+        </p>
       </div>
       <form onSubmit={handleSubmit(userLogin)} className="form">
         <div className="input">
-          <input type="email" placeholder="Email"
+          <input
+            type="email"
+            placeholder="Email"
             {...register("email", { required: true })}
-            className={errors.email ? "input--error" : ""}
           />
+          {errors.email && <span>El email es obligatorio</span>}
         </div>
 
         <div className="input">
-          <input type="password" placeholder="Contraseña"
+          <input
+            type="password"
+            placeholder="Contraseña"
             {...register("password", { required: true })}
-            className={errors.password ? "input--error" : ""} />
+          />
+          {errors.password && <span>la contraseña es obligatoria</span>}
         </div>
-        <button>Iniciar sesión</button> 
+        <button type="submit">Iniciar sesión</button>
       </form>
       <div className="linkRegister">
-      <span>Restablecer contraseña</span> 
+        <span>Restablecer contraseña</span>
         <h5>¿No tienes una cuenta?</h5>
-        <Link to="/register">
-          <button className="register">Registrate aquí</button>
-        </Link>
-        </div>
-      
+        {/* <Link to="/register"> */}
+        <button className="register" onClick={changePage}>
+          Registrate aquí
+        </button>
+        {/* </Link> */}
+      </div>
     </div>
   );
 };
