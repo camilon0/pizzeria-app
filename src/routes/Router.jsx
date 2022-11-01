@@ -14,12 +14,16 @@ export const AppContext = createContext({});
 
 const Router = () => {
   const [usuario, setUsuario] = useState({});
+  const [pizza, setPizza] = useState();
+
   return (
     <>
       <AppContext.Provider
         value={{
           usuario,
           setUsuario,
+          pizza,
+          setPizza
         }}
       >
         <BrowserRouter>
