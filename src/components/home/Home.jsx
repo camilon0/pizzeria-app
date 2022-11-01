@@ -12,6 +12,7 @@ const Home = () => {
     const product = await getPizzas()
     console.log(product);
     //setAllPizzas(...product)
+    
   }
   getPoducts();
 
