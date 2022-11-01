@@ -22,9 +22,6 @@ const Register = () => {
     if (response?.id) {
       swal("Excelente!", "Usuario creado con éxito!", "success");
       navigate("/");
-
-      console.log(user);
-      navigate("/");
     }
   };
   return (
