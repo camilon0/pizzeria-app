@@ -23,18 +23,19 @@ const Search = () => {
 
   const handleChange = (e) => {
     setSearch(e.target.value);
-    filter(e.target.value);
   };
 
-  const filter = (word) => {
-    const searchFilter = pizzas.filter((results) => {
-      if (results.name.toString().toLowerCase().includes(word.toLowerCase())) {
-        return results;
-      }
-    });
-    setPizzas(searchFilter);
-    console.log(searchFilter);
-  };
+  const filtrar = ! search ? pizzas : pizzas.filter((results) => results.name.toString().toLowerCase().includes(search.toLowerCase()))
+
+  // const filter = (word) => {
+  //   const searchFilter = pizzas.filter((results) => {
+  //     if (results.name.toString().toLowerCase().includes(word.toLowerCase())) {
+  //       return results;
+  //     }
+  //   });
+  //   setPizzas(searchFilter);
+  //   console.log(searchFilter);
+  // };
 
   return (
     <>
@@ -64,7 +65,7 @@ const Search = () => {
         />
         <button className="btn btn-success">Buscar</button>
         <div>
-          {pizzas.map((item, index) => {
+          {filtrar.map((item, index) => {
             return (
               <div key={index} className="card text-bg-dark">
                 <img src={item.image} className="card-img" alt="Pizza" />
