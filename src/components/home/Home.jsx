@@ -1,43 +1,30 @@
-import React, { useContext, useState }from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 import { AppContext } from "../../routes/Router";
+import { useEffect } from "react";
 import { getPizzas } from "../../services/user";
+
 const Home = () => {
-
-  const {pizza, setPizza, usuario } = useContext(AppContext);
-
-  const [allPizzas, setAllPizzas] = useState({});
-
-  const getPoducts = async () => {
-    const product = await getPizzas()
-    console.log(product);
-    //setAllPizzas(...product)
-  }
-  getPoducts();
+  const { setPizza, pizza } = useContext(AppContext);
+  const traerPizzas = async () => {
+    const Y = await getPizzas();
+    setPizza(Y);
+    console.log(pizza);
+  };
+  useEffect(() => {
+    traerPizzas();
+  }, []);
+  console.log(pizza);
 
   return (
     <div>
-      <Link to="/search">
-        <button>Search</button>
-      </Link>
-      <Link to="/cart">
-        <button>Carrito</button>
-      </Link>
-      <Link to="/details">
-        <button>detalles</button>
-      </Link>
-      <h1>
-        {Object.entries(usuario).length === 0
-          ? "App Context"
-          : `Hola!! ${usuario.name}`}
-      </h1>
-      <ul>
-        {/* {
-          allPizzas.map((item, index) =>(
-            <li key={index}>{item.name}</li>
-          ))
-        } */}
-      </ul>
+      {pizza.map((item, index) => {
+        return (
+          <span key={index}>
+            <img src={item.image} alt="pizzas" />
+            <p>{item.name}</p>
+          </span>
+        );
+      })}
     </div>
   );
 };

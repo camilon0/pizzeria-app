@@ -14,33 +14,31 @@ export const AppContext = createContext({});
 
 const Router = () => {
   const [usuario, setUsuario] = useState({});
-  const [pizza, setPizza] = useState();
+  const [pizza, setPizza] = useState([]);
 
   return (
-    <>
-      <AppContext.Provider
-        value={{
-          usuario,
-          setUsuario,
-          pizza,
-          setPizza
-        }}
-      >
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/details" element={<Details />} />
+    <AppContext.Provider
+      value={{
+        usuario,
+        setUsuario,
+        pizza,
+        setPizza,
+      }}
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/details" element={<Details />} />
 
-            <Route path="/register" element={<Register />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/success" element={<Success />} />
-            <Route path="*" element={<NoMatch />} />
-          </Routes>
-        </BrowserRouter>
-      </AppContext.Provider>
-    </>
+          <Route path="/register" element={<Register />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/success" element={<Success />} />
+          <Route path="*" element={<NoMatch />} />
+        </Routes>
+      </BrowserRouter>
+    </AppContext.Provider>
   );
 };
 

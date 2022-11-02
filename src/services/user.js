@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const URL_USERS = " http://localhost:3004/users";
-const URL_PIZZAS = 'http://localhost:3004';
+const URL_USERS = " http://localhost:5000/users";
+const URL_PIZZAS = "http://localhost:5000";
 
 export const userFind = async (email, pass) => {
   const url = `${URL_USERS}?email=${email}&password=${pass}`;
@@ -29,7 +29,10 @@ export const createUser = async (user) => {
 
 export const getPizzas = async () => {
   try {
-    const { data } = await axios.get(`${URL_PIZZAS}/pizzas`);
+    const url_pizzas = `${URL_PIZZAS}/pizzas`;
+
+    const { data } = await axios.get(url_pizzas);
+
     return data;
   } catch (error) {
     return {
