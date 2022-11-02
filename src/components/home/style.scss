@@ -1,1 +1,74 @@
+@media (max-width: 600px) {
+  .header{
+    display: flex;
+    justify-content: space-between;
+    img{
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
 
+    .perfil{
+
+      justify-content: space-between;
+   
+      }
+    }
+    
+  }
+.home{
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 10px solid black;
+  border-radius: 20px;
+ .disponibles{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+span{
+  font-weight: bold;
+}
+  button{
+    border: none;
+    background-color: transparent;
+    color: rgb(204, 60, 60); 
+    font-weight: 600;
+  }
+ }
+  .card{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    height: 180px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+  .card-img-overlay{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+    .card-img{
+       filter: brightness(0.5);  
+    }
+  
+    .card-title{
+      width: 200px; 
+      height: auto;
+      margin-top: 90px;
+      
+    }
+    .card-text{
+      width: 80px;
+      height: 35px;
+      margin-top: 90px;
+      border-radius: 20px;
+      padding: 5px;
+      background-color: rgb(204, 60, 60);
+    }
+ }
+}
+}

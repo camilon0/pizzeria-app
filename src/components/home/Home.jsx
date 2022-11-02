@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { AppContext } from "../../routes/Router";
 import { useEffect } from "react";
 import { getPizzas } from "../../services/user";
+import "./style.scss";
+import Header from "./Header";
 
 const Home = () => {
   const { setPizza, pizza } = useContext(AppContext);
@@ -16,16 +18,28 @@ const Home = () => {
   console.log(pizza);
 
   return (
-    <div>
+    
+    <div className="home">
+    <Header />
+      <div className="disponibles">
+        <span>Pizzas disponibles</span>
+        <button>Ver todas</button>
+      </div>
       {pizza.map((item, index) => {
         return (
-          <span key={index}>
-            <img src={item.image} alt="pizzas" />
-            <p>{item.name}</p>
-          </span>
+         
+          <div key={index} className="card text-bg-dark"> 
+          <img src={item.image} className="card-img" alt="Pizza" />
+          <div className="card-img-overlay">
+            <h5 className="card-title">{item.name}</h5>
+            <p className="card-text">{item.price}</p>
+          </div>
+        </div>
+         
         );
       })}
     </div>
+    
   );
 };
 

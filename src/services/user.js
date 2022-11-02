@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const URL_USERS = " http://localhost:5000/users";
-const URL_PIZZAS = "http://localhost:5000";
+const URL_USERS = " http://localhost:4000/users";
+const URL_PIZZAS = "http://localhost:4000";
 
 export const userFind = async (email, pass) => {
   const url = `${URL_USERS}?email=${email}&password=${pass}`;
