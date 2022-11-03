@@ -30,16 +30,7 @@ const Home = () => {
         </Link>
       </div>
       {pizza.map((item, index) => {
-        return (
-          <Card key={item.id} pizza={item} />
-          // <div key={index} className="card text-bg-dark">
-          //   <img src={item.image} className="card-img" alt="Pizza" />
-          //   <div className="card-img-overlay">
-          //     <h5 className="card-title">{item.name}</h5>
-          //     <p className="card-text">{item.price}</p>
-          //   </div>
-          // </div>
-        );
+        return <Card key={item.id} pizza={item} />;
       })}
     </div>
   );

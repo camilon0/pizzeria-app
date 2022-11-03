@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { AppContext } from "../../routes/Router";
+
 import { getSinglePizza } from "../../services/user";
-import { useNavigate } from "react-router-dom";
 
 const Details = () => {
+  const { cantidadPizza, setCantidadPizza } = useContext(AppContext);
   const [traerPizza, setTraerPizza] = useState({});
   const { idPizza } = useParams();
 
@@ -20,20 +22,20 @@ const Details = () => {
     console.log(traerPizza);
   }, []);
 
-  const [quantity, setQuantity] = useState(1)
-
   const handleClick = (operation) => {
-    if (operation === 'plus') {
-      setQuantity(quantity + 1)
-    } else {
-      setQuantity(quantity - 1)
-    }
-  }
+    if (operation === "plus") {
+      const incremento = cantidadPizza + 1;
 
+      setCantidadPizza(incremento);
+    } else {
+      const decremento = cantidadPizza - 1;
+      setCantidadPizza(decremento);
+    }
+  };
   const navigate = useNavigate();
 
-  const goToDetail = () => {
-    navigate('/form');
+  const goToCart = (id) => {
+    navigate(`/form/${id}`);
   };
 
   return (
@@ -51,12 +53,25 @@ const Details = () => {
         )}
       </div>
       <div className="counter">
-        <button disabled={quantity <= 1} onClick={() => { handleClick('minus') }}>-</button>
-        <span>{quantity}</span>
-        <button onClick={() => { handleClick('plus') }}>+</button>
+        <button
+          disabled={cantidadPizza <= 1}
+          onClick={() => {
+            handleClick("minus");
+          }}
+        >
+          -
+        </button>
+        <span>{cantidadPizza}</span>
+        <button
+          onClick={() => {
+            handleClick("plus");
+          }}
+        >
+          +
+        </button>
       </div>
-        <div>{quantity * traerPizza.price}</div>
-      <button onClick={goToDetail}>Pagar</button>
+      <div>{cantidadPizza * traerPizza.price}</div>
+      <button onClick={() => goToCart(traerPizza.id)}>Pagar</button>
     </>
   );
 };
