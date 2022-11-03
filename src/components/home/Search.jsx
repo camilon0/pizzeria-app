@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { filterPizzas } from "../../services/user";
-//import "bootstrap/dist/js/bootstrap";
 import "./style.scss";
 import { useEffect } from "react";
 import Card from "./Card";
@@ -34,16 +33,6 @@ const Search = () => {
     : pizzas.filter((results) =>
         results.name.toString().toLowerCase().includes(search.toLowerCase())
       );
-
-  // const filter = (word) => {
-  //   const searchFilter = pizzas.filter((results) => {
-  //     if (results.name.toString().toLowerCase().includes(word.toLowerCase())) {
-  //       return results;
-  //     }
-  //   });
-  //   setPizzas(searchFilter);
-  //   console.log(searchFilter);
-  // };
 
   return (
     <>

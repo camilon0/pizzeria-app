@@ -5,6 +5,7 @@ import { getPizzas } from "../../services/user";
 import "./style.scss";
 import Header from "./Header";
 import { Link } from "react-router-dom";
+import Card from "./Card";
 
 const Home = () => {
   const { pizza, setPizza } = useContext(AppContext);
@@ -30,13 +31,14 @@ const Home = () => {
       </div>
       {pizza.map((item, index) => {
         return (
-          <div key={index} className="card text-bg-dark">
-            <img src={item.image} className="card-img" alt="Pizza" />
-            <div className="card-img-overlay">
-              <h5 className="card-title">{item.name}</h5>
-              <p className="card-text">{item.price}</p>
-            </div>
-          </div>
+          <Card key={item.id} pizza={item} />
+          // <div key={index} className="card text-bg-dark">
+          //   <img src={item.image} className="card-img" alt="Pizza" />
+          //   <div className="card-img-overlay">
+          //     <h5 className="card-title">{item.name}</h5>
+          //     <p className="card-text">{item.price}</p>
+          //   </div>
+          // </div>
         );
       })}
     </div>
