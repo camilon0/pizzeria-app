@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSinglePizza } from "../../services/user";
+import { useNavigate } from "react-router-dom";
 
 const Details = () => {
   const [traerPizza, setTraerPizza] = useState({});
@@ -29,6 +30,12 @@ const Details = () => {
     }
   }
 
+  const navigate = useNavigate();
+
+  const goToDetail = () => {
+    navigate('/form');
+  };
+
   return (
     <>
       <div>
@@ -49,7 +56,7 @@ const Details = () => {
         <button onClick={() => { handleClick('plus') }}>+</button>
       </div>
         <div>{quantity * traerPizza.price}</div>
-      <button>Pagar</button>
+      <button onClick={goToDetail}>Pagar</button>
     </>
   );
 };
