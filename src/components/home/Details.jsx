@@ -18,19 +18,37 @@ const Details = () => {
     obtenerPizza();
     console.log(traerPizza);
   }, []);
+
+  const [quantity, setQuantity] = useState(1)
+
+  const handleClick = (operation) => {
+    if (operation === 'plus') {
+      setQuantity(quantity + 1)
+    } else {
+      setQuantity(quantity - 1)
+    }
+  }
+
   return (
-    <div>
-      {traerPizza ? (
-        <div>
-          <img src={traerPizza.image} alt="pizza" />
-          <h1>{traerPizza.name}</h1>
-          <p>{traerPizza.description}</p>
-          <p>{traerPizza.price}</p>
-        </div>
-      ) : (
-        "cargando ..."
-      )}
-    </div>
+    <>
+      <div>
+        {traerPizza ? (
+          <div>
+            <img src={traerPizza.image} alt="pizza" />
+            <h1>{traerPizza.name}</h1>
+            <p>{traerPizza.description}</p>
+            <p>{traerPizza.price}</p>
+          </div>
+        ) : (
+          "cargando ..."
+        )}
+      </div>
+      <div className="counter">
+        <button onClick={() => { handleClick('minus') }}>-</button>
+        <span>{quantity}</span>
+        <button onClick={() => { handleClick('plus') }}>+</button>
+      </div>
+    </>
   );
 };
 
