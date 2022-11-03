@@ -44,10 +44,12 @@ const Details = () => {
         )}
       </div>
       <div className="counter">
-        <button onClick={() => { handleClick('minus') }}>-</button>
+        <button disabled={quantity <= 1} onClick={() => { handleClick('minus') }}>-</button>
         <span>{quantity}</span>
         <button onClick={() => { handleClick('plus') }}>+</button>
       </div>
+        <div>{quantity * traerPizza.price}</div>
+      <button>Pagar</button>
     </>
   );
 };
