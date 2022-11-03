@@ -6,10 +6,13 @@ import { filterPizzas } from "../../services/user";
 //import "bootstrap/dist/js/bootstrap";
 import "./style.scss";
 import { useEffect } from "react";
+import Card from "./Card";
 
 const Search = () => {
   const [pizzas, setPizzas] = useState([]);
   const [search, setSearch] = useState("");
+  //pone el search inicial sin pizzas
+  const [showFilter, setShowFilter] = useState(false);
 
   const fetchPizzas = async () => {
     const product = await filterPizzas();
@@ -20,12 +23,17 @@ const Search = () => {
   useEffect(() => {
     fetchPizzas();
   }, []);
-
+  //le damos el valos setShowFilter true aceptando poner el estado inicial en blanco
   const handleChange = (e) => {
     setSearch(e.target.value);
+    setShowFilter(true);
   };
 
-  const filtrar = ! search ? pizzas : pizzas.filter((results) => results.name.toString().toLowerCase().includes(search.toLowerCase()))
+  const filtrar = !search
+    ? pizzas
+    : pizzas.filter((results) =>
+        results.name.toString().toLowerCase().includes(search.toLowerCase())
+      );
 
   // const filter = (word) => {
   //   const searchFilter = pizzas.filter((results) => {
@@ -65,17 +73,11 @@ const Search = () => {
         />
         <button className="btn btn-success">Buscar</button>
         <div>
-          {filtrar.map((item, index) => {
-            return (
-              <div key={index} className="card text-bg-dark">
-                <img src={item.image} className="card-img" alt="Pizza" />
-                <div className="card-img-overlay">
-                  <h5 className="card-title">{item.name}</h5>
-                  <p className="card-text">{item.price}</p>
-                </div>
-              </div>
-            );
-          })}
+          {/* Le pasamos la accion del estado mas la funcion .map de pizzas */}
+          {showFilter &&
+            filtrar.map((item) => {
+              return <Card key={item.id} pizza={item} />;
+            })}
         </div>
       </div>
     </>

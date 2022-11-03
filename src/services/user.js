@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const URL_USERS = " http://localhost:3004/users";
-const URL_PIZZAS = "http://localhost:3004";
+const URL_USERS = " http://localhost:5000/users";
+const URL_PIZZAS = "http://localhost:5000";
 
 export const userFind = async (email, pass) => {
   const url = `${URL_USERS}?email=${email}&password=${pass}`;
@@ -15,6 +15,7 @@ export const userFind = async (email, pass) => {
     };
   }
 };
+
 export const createUser = async (user) => {
   try {
     const { data } = await axios.post(`${URL_USERS}`, user);
@@ -46,6 +47,18 @@ export const filterPizzas = async (word) => {
   try {
     const url_filter = `${URL_PIZZAS}/pizzas`;
     const { data } = await axios.get(url_filter);
+    return data;
+  } catch (error) {
+    return {
+      error,
+      data: null,
+    };
+  }
+};
+export const getSinglePizza = async (id) => {
+  const url = `${URL_PIZZAS}/pizzas?id=${id}`;
+  try {
+    const { data } = await axios.get(url);
     return data;
   } catch (error) {
     return {

@@ -8,10 +8,12 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   const { pizza, setPizza } = useContext(AppContext);
+
   const fetchPizzas = async () => {
     const product = await getPizzas();
     setPizza(product);
   };
+
   useEffect(() => {
     fetchPizzas();
   }, []);
