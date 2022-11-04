@@ -1,14 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { AppContext } from "../../routes/Router";
-import { createUser } from "../../services/user";
+//import { AppContext } from "../../routes/Router";
+import { createUser, redirectUser } from "../../services/user";
 import swal from "sweetalert";
 import "./style.scss";
 
 const Register = () => {
   //const { postUsuario } = useContext(AppContext);
   const navigate = useNavigate();
+
+  useEffect(() => {  //aqui
+    //redirect if not session
+    redirectUser(navigate);
+}, [])
 
   const {
     register,

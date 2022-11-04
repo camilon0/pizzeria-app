@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AppContext } from "../../routes/Router";
-import { userFind } from "../../services/user";
+import { redirectUser, userFind } from "../../services/user";
 import swal from "sweetalert";
 import "./style.scss";
 
@@ -10,9 +10,11 @@ const Login = () => {
   const { setUsuario } = useContext(AppContext);
   const navigate = useNavigate();
 
-  const changePage = () => {
-    navigate("/register");
-  };
+  useEffect(() => {   //aqui
+    //redirect if not session
+    redirectUser(navigate);
+}, [])
+
   const {
     register,
     handleSubmit,
@@ -24,6 +26,7 @@ const Login = () => {
     if (user.length && !user.error) {
       swal("Bienvendio a la PizzeriApi, Que JSON desea llevar?");
       setUsuario(...user);
+      sessionStorage.setItem('user', JSON.stringify(user[0]));
       console.log(...user);
       navigate("/home");
     }
@@ -66,11 +69,11 @@ const Login = () => {
       <div className="linkRegister">
         <span>Restablecer contraseña</span>
         <h5>¿No tienes una cuenta?</h5>
-        {/* <Link to="/register"> */}
-        <button className="register" onClick={changePage}>
+        <Link to="/register">
+        <button className="register">
           Registrate aquí
         </button>
-        {/* </Link> */}
+        </Link>
       </div>
     </div>
   );

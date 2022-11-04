@@ -67,3 +67,29 @@ export const getSinglePizza = async (id) => {
     };
   }
 };
+
+export const createBuy = async (buy) => {
+  try {
+    const { data } = await axios.post(`${URL_PIZZAS}/compra`, buy);
+    return data;
+  } catch (error) {
+    return {
+      error,
+      data: null,
+    };
+  }
+};
+
+export const redirectUser = (navigate) => {
+  const userSession = sessionStorage.getItem('user');
+  if (userSession) {
+      navigate('/home');
+  }
+}
+
+export const protectedRoute = (navigate) => {
+  const userSession = sessionStorage.getItem('user');
+  if (!userSession) {
+      navigate('/');
+  }
+}
