@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getSinglePizza } from "../../services/user";
 import Cart from "./Cart";
 
@@ -36,7 +36,10 @@ const FormDate = () => {
           Dirección
           <input type="text" />
         </label>
-        <button>Pagar ahora</button>
+
+        <Link to={"/pay"}>
+          <button>Pagar ahora</button>
+        </Link>
       </form>
     </>
   );

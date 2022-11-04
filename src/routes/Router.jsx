@@ -7,7 +7,7 @@ import Card from "../components/home/Card";
 import Cart from "../components/home/Cart";
 import Search from "../components/home/Search";
 import Register from "../components/loginAndRegister/Register";
-import Success from "../components/home/Success";
+import PayNow from "../components/home/PayNow";
 import NoMatch from "../components/NoMatch";
 import FormData from "../components/home/FormData";
 
@@ -39,7 +39,7 @@ const Router = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/card" element={<Card />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/success" element={<Success />} />
+          <Route path="/pay" element={<PayNow />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </BrowserRouter>
