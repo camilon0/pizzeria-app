@@ -5,6 +5,8 @@ import { AppContext } from "../../routes/Router";
 import { userFind } from "../../services/user";
 import swal from "sweetalert";
 import "./style.scss";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 const Login = () => {
   const { setUsuario } = useContext(AppContext);
@@ -30,48 +32,47 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      <img
-        src="https://hungryforhalaal.co.za/wp-content/uploads/2021/05/Pizza-Spots-Cape-Town-Hungry-for-Halaal.jpg"
-        alt="Pizza"
-      />
-      <div className="login__title">
-        <h1>PizzaApi</h1>
-        <h2>Inicia sesión en tu cuenta</h2>
-        <p>
-          Disfruta de la mejor pizza creada para las personas amantes del
-          Código.
-        </p>
-      </div>
-      <form onSubmit={handleSubmit(userLogin)} className="form">
-        <div className="input">
-          <input
-            type="email"
-            placeholder="Email"
-            {...register("email", { required: true })}
-          />
-          {errors.email && <span>El email es obligatorio</span>}
-        </div>
+    <div className="loginBackground">
 
-        <div className="input">
-          <input
-            type="password"
-            placeholder="Contraseña"
-            {...register("password", { required: true })}
-          />
-          {errors.password && <span>la contraseña es obligatoria</span>}
+      {/* Encabezado */}
+      <div className="content">
+        {/* Formulario de login */}
+        <Form onSubmit={handleSubmit(userLogin)}>
+          <h2 className = "mainText" > PizzaApi </h2>
+          <h4 className = "secondText"> Inicia sesión en tu cuenta </h4>
+          <p className = "secondText">Disfruta de la mejor pizza creada para las personas amantes del Código.</p>
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <p className="tirtText" > E-mail: </p>
+            <Form.Control required type="email" placeholder="ejemplo@correo.com" {...register("email", { required: true })}/>
+            {/* <Form.Text className="text-muted">
+              El e-mail es obligatorio.
+            </Form.Text> */}
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <p className="tirtText" > Contraseña: </p>
+            <Form.Control required type="password" placeholder="Ingrese la contraseña" {...register("password", { required: true })}/>
+            {/* <Form.Text className="text-muted">
+              La contraseña es obligatoria.
+            </Form.Text> */}
+          </Form.Group>
+
+          <div class="row justify-content-center">
+            <Button type="submit" variant="primary"> Iniciar sesión </Button>
+          </div>
+        </Form>
+  
+
+      {/* Registro de clientes nuevos */}
+      <div className="registerSection">
+        <p className="registerText1">Restablecer contraseña</p>
+        <p className="registerText2">¿No tienes una cuenta?</p>
+        <div class="col-md-12 text-center">
+          <button type="button" onClick={changePage} class="btn btn-link">Regístrate aquí</button>
         </div>
-        <button type="submit">Iniciar sesión</button>
-      </form>
-      <div className="linkRegister">
-        <span>Restablecer contraseña</span>
-        <h5>¿No tienes una cuenta?</h5>
-        {/* <Link to="/register"> */}
-        <button className="register" onClick={changePage}>
-          Registrate aquí
-        </button>
-        {/* </Link> */}
       </div>
+    </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .login {
     color: aliceblue;
     width: 100vw;
@@ -71,7 +71,7 @@
   }
 
   .linkRegister {
-    position: relative;
+    position: center;
     z-index: 2;
     font-size: 18px;
     text-align: center;
@@ -87,5 +87,124 @@
       font-weight: 600;
       border: none;
     }
+  }
+
+.loginBackground{
+  background-image: url("https://scontent.feoh1-1.fna.fbcdn.net/v/t39.30808-6/314359039_5743162542411902_4550270150323008068_n.jpg?stp=dst-jpg_s640x640&_nc_cat=103&ccb=1-7&_nc_sid=730e14&_nc_ohc=b7_0n9--5QQAX9nSevm&tn=igq51IGjfVQk341Y&_nc_ht=scontent.feoh1-1.fna&oh=00_AfCMqyfEkIoA2tvSP6K4QIcPIm_LR9jriEuqJuPs2GX7vg&oe=636A2AE7");
+  background-repeat: no-repeat;
+  padding-top: 10%;
+  background-position: fixed;
+  padding-bottom: 5%;
+  padding-right: 8%;
+  padding-left: 8%;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+.mainText{
+  text-align: center;
+  color: white;
+  margin-bottom: 10%;
+}
+
+.secondText{
+  text-align: left;
+  color: white;
+  margin-bottom: 5%;
+}
+
+.tirtText{
+  text-align: left;
+  color: white;
+}
+
+.registerSection{
+  margin-top: 5%;
+  position: center;
+  z-index: 2;
+  justify-content: center;
+}
+
+.registerText1{
+  position: center;
+  text-align: center;
+  color: rgb(253, 252, 252);
+  font-weight: bold;
+  justify-content: center;
+}
+
+.registerText2{
+  text-align: center;
+  color: rgb(253, 252, 252);
+  font-size: 13px;
+}
+
+}
+
+@media (min-width: 801px) {
+  .loginBackground{
+    background-image: url("https://okdiario.com/img/2019/09/09/curiosidades-de-la-pizza.jpg");
+    background-repeat: repeat;
+    padding-top: 5%;
+    background-position: absolute;
+    padding-bottom: 10%;
+    padding-right: 6%;
+    padding-left: 6%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .content{
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding-top: 5%;
+    position: left;
+    padding-bottom: 5%;
+    padding-right: 6%;
+    padding-left: 6%;
+    border-radius: 20px;
+    width: 40%;
+    height: 100%;
+  }
+
+  .mainText{
+    text-align: center;
+    color: rgb(7, 6, 6);
+    margin-bottom: 10%;
+  }
+  
+  .secondText{
+    text-align: left;
+    color: rgb(7, 6, 6);
+    margin-bottom: 5%;
+  }
+
+  .tirtText{
+    text-align: left;
+    color: rgb(7, 6, 6);
+    font-weight: bold;
+  }
+
+  .registerSection{
+    margin-top: 5%;
+    position: center;
+    z-index: 2;
+    justify-content: center;
+  }
+
+  .registerText1{
+    position: center;
+    text-align: center;
+    color: rgb(7, 6, 6);
+    font-weight: bold;
+    justify-content: center;
+  }
+
+  .registerText2{
+    text-align: center;
+    color: rgb(7, 6, 6);
+    font-size: 13px;
   }
 }
