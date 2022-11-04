@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { getSinglePizza } from "../../services/user";
 import Cart from "./Cart";
 import { createBuy } from "../../services/user";
-import swal from "sweetalert";
+//import swal from "sweetalert";
 import { AppContext } from "../../routes/Router";
 
 const FormDate = () => {
@@ -38,8 +38,7 @@ const FormDate = () => {
     //if (user.length !== "" && password.length !== "" && name.length !== "") {
     const response = await createBuy(buy);
     if (response?.id) {
-      swal("Excelente!", "compra éxitosa!", "success");
-      navigate("/home");
+      navigate("/pay");
     }
   };
 
@@ -82,6 +81,7 @@ const FormDate = () => {
             readOnly
           />
         </label>
+
         <button type="submit">Pagar ahora</button>
       </form>
     </>
