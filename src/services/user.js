@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const URL_USERS = " http://localhost:3004/users";
-const URL_PIZZAS = "http://localhost:3004";
+const URL_USERS = "https://pizzeria-app-back-production.up.railway.app/users";
+const URL_PIZZAS = "https://pizzeria-app-back-production.up.railway.app";
 
 export const userFind = async (email, pass) => {
   const url = `${URL_USERS}?email=${email}&password=${pass}`;
@@ -81,15 +81,15 @@ export const createBuy = async (buy) => {
 };
 
 export const redirectUser = (navigate) => {
-  const userSession = sessionStorage.getItem('user');
+  const userSession = sessionStorage.getItem("user");
   if (userSession) {
-      navigate('/home');
+    navigate("/home");
   }
-}
+};
 
 export const protectedRoute = (navigate) => {
-  const userSession = sessionStorage.getItem('user');
+  const userSession = sessionStorage.getItem("user");
   if (!userSession) {
-      navigate('/');
+    navigate("/");
   }
-}
+};

@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./style.scss";
 
 const Card = ({ pizza }) => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Card = ({ pizza }) => {
       <img src={pizza.image} className="card-img" alt="Pizza" />
       <div className="card-img-overlay">
         <h5 className="card-title">{pizza.name}</h5>
-        <p className="card-text">{pizza.price}</p>
+        <p className="card-text">{pizza.price}$</p>
       </div>
     </div>
   );

@@ -3,14 +3,17 @@
     color: aliceblue;
     width: 100vw;
     height: 100vh;
+    border: 10px solid black;
+    border-radius: 20px;
 
     img {
       position: absolute;
       object-fit: cover;
       z-index: 1;
+      width: 96%;
+      height: 98%;
+      border-radius: 11px;
       filter: brightness(0.5);
-      width: 100%;
-      height: 100%;
     }
 
     &__title {
@@ -21,6 +24,7 @@
       font-size: 20px;
       position: relative;
       z-index: 2;
+      margin-top: 60px;
 
       h1 {
         text-align: center;
@@ -29,6 +33,7 @@
       p {
         font-size: 15px;
         text-align: left;
+        margin-top: 20px;
       }
 
       h2 {
@@ -45,10 +50,12 @@
     position: relative;
     z-index: 2;
     color: white;
+
     input {
       margin-left: 10px;
       background-color: transparent;
       border: none;
+      color: white;
     }
 
     ::placeholder {
@@ -80,6 +87,7 @@
       margin-top: 40px;
       font-size: 12px;
     }
+
     .register {
       background-color: transparent;
       color: white;
@@ -88,4 +96,9 @@
       border: none;
     }
   }
+}
+.formRegister {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 150px;
 }

@@ -5,7 +5,6 @@ const Cart = ({ pizza }) => {
   const { cantidadPizza } = useContext(AppContext);
   return (
     <div key={pizza.id} className="card text-bg-dark">
-      <div>{cantidadPizza}</div>
       <img src={pizza.image} className="card-img" alt="Pizza" />
       <div className="card-img-overlay">
         <h5 className="card-title">{pizza.name}</h5>

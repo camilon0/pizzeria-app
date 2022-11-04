@@ -10,10 +10,11 @@ const Register = () => {
   //const { postUsuario } = useContext(AppContext);
   const navigate = useNavigate();
 
-  useEffect(() => {  //aqui
+  useEffect(() => {
+    //aqui
     //redirect if not session
     redirectUser(navigate);
-}, [])
+  }, []);
 
   const {
     register,
@@ -35,31 +36,33 @@ const Register = () => {
         src="https://hungryforhalaal.co.za/wp-content/uploads/2021/05/Pizza-Spots-Cape-Town-Hungry-for-Halaal.jpg"
         alt="Pizza"
       />
+      <div className="formRegister"></div>
       <form onSubmit={handleSubmit(userCreate)} className="form">
-        <label>
-          Nombre:
+        <div className="input">
           <input
             type="text"
             {...register("name", { required: true })}
             className={errors.name ? "input--error" : ""}
+            placeholder="Nombre"
           />
-        </label>
-        <label>
-          Email:
+        </div>
+
+        <div className="input">
           <input
             type="email"
             {...register("email", { required: true })}
             className={errors.email ? "input--error" : ""}
+            placeholder="Email"
           />
-        </label>
-        <label>
-          Password:
+        </div>
+        <div className="input">
           <input
             type="password"
             {...register("password", { required: true })}
             className={errors.password ? "input--error" : ""}
+            placeholder="Contraseña"
           />
-        </label>
+        </div>
 
         <button type="submit">Registrarse</button>
       </form>

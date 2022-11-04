@@ -6,6 +6,8 @@ import { filterPizzas } from "../../services/user";
 import "./style.scss";
 import { useEffect } from "react";
 import Card from "./Card";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const Search = () => {
   const [pizzas, setPizzas] = useState([]);
@@ -35,22 +37,10 @@ const Search = () => {
       );
 
   return (
-    <>
-      <div>
-        <Link to="/home">
-          <button>Home</button>
-        </Link>
-        <Link to="/search">
-          <button>Search</button>
-        </Link>
-        <Link to="/cart">
-          <button>Carrito</button>
-        </Link>
-        <Link to="/details">
-          <button>detalles</button>
-        </Link>
-      </div>
-      <div className="input-group mb-3">
+    <main className="main">
+      <div className="home">
+        <Header />
+
         <input
           type="text"
           value={search}
@@ -61,15 +51,16 @@ const Search = () => {
           onChange={handleChange}
         />
         <button className="btn btn-success">Buscar</button>
-        <div>
+        <section className="container">
           {/* Le pasamos la accion del estado mas la funcion .map de pizzas */}
           {showFilter &&
             filtrar.map((item) => {
               return <Card key={item.id} pizza={item} />;
             })}
-        </div>
+        </section>
       </div>
-    </>
+      <Footer />
+    </main>
   );
 };
 

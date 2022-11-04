@@ -6,18 +6,20 @@ import "./style.scss";
 import Header from "./Header";
 import { Link, useNavigate } from "react-router-dom";
 import Card from "./Card";
+import Footer from "./Footer";
 
 const Home = () => {
   const { pizza, setPizza } = useContext(AppContext);
 
-  const [reload, setReload] = useState(false) //aqui
+  const [reload, setReload] = useState(false); //aqui
 
   const navigate = useNavigate(); //aqui
 
-  const handleCloseSession = () => { //aqui
+  const handleCloseSession = () => {
+    //aqui
     sessionStorage.clear();
-    setReload(!reload)
-  }
+    setReload(!reload);
+  };
 
   const fetchPizzas = async () => {
     const product = await getPizzas();
@@ -26,23 +28,27 @@ const Home = () => {
 
   useEffect(() => {
     fetchPizzas();
-    protectedRoute(navigate) //aqui
+    protectedRoute(navigate); //aqui
   }, [reload]);
 
   return (
-    <div className="home">
-      <Header handleCloseSession={handleCloseSession}/> 
-      <div className="disponibles">
-        <span>Pizzas disponibles</span>
-        <button>Ver todas</button>
-        <Link to="/search">
-          <button>Search</button>
-        </Link>
+    <main className="main">
+      <div className="home">
+        <Header />
+        <div className="disponibles">
+          <span>Pizzas disponibles</span>
+          <Link to="/search">
+            <button>Search</button>
+          </Link>
+        </div>
+        <section className="container">
+          {pizza.map((item, index) => {
+            return <Card key={item.id} pizza={item} />;
+          })}
+        </section>
       </div>
-      {pizza.map((item, index) => {
-        return <Card key={item.id} pizza={item} />;
-      })}
-    </div>
+      <Footer handleCloseSession={handleCloseSession} />
+    </main>
   );
 };
 

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../../routes/Router";
-
 import { getSinglePizza } from "../../services/user";
 
 const Details = () => {
@@ -40,38 +39,47 @@ const Details = () => {
 
   return (
     <>
-      <div>
-        {traerPizza ? (
-          <div>
-            <img src={traerPizza.image} alt="pizza" />
-            <h1>{traerPizza.name}</h1>
-            <p>{traerPizza.description}</p>
-            <p>{traerPizza.price}</p>
+      <div className="details">
+        <div className="descriptionPizza">
+          {traerPizza ? (
+            <div>
+              <img src={traerPizza.image} alt="pizza" />
+              <h2>{traerPizza.name}</h2>
+              <span className="price">{traerPizza.price}$</span>
+              <h6>Descripción</h6>
+              <p>{traerPizza.description}</p>
+            </div>
+          ) : (
+            "cargando ..."
+          )}
+        </div>
+        <div className="containerPagar">
+          <div className="counter">
+            <button
+              disabled={cantidadPizza <= 1}
+              onClick={() => {
+                handleClick("minus");
+              }}
+            >
+              -
+            </button>
+            <span>{cantidadPizza}</span>
+            <button
+              onClick={() => {
+                handleClick("plus");
+              }}
+            >
+              +
+            </button>
           </div>
-        ) : (
-          "cargando ..."
-        )}
+          <div className="priceContainer">
+            {cantidadPizza * traerPizza.price}$
+          </div>
+          <button className="pagar" onClick={() => goToCart(traerPizza.id)}>
+            Pagar
+          </button>
+        </div>
       </div>
-      <div className="counter">
-        <button
-          disabled={cantidadPizza <= 1}
-          onClick={() => {
-            handleClick("minus");
-          }}
-        >
-          -
-        </button>
-        <span>{cantidadPizza}</span>
-        <button
-          onClick={() => {
-            handleClick("plus");
-          }}
-        >
-          +
-        </button>
-      </div>
-      <div>{cantidadPizza * traerPizza.price}</div>
-      <button onClick={() => goToCart(traerPizza.id)}>Pagar</button>
     </>
   );
 };
