@@ -1,9 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AppContext } from "../../routes/Router";
 
 
-const Header = () => {
-    const { theme, usuario } = useContext(AppContext);
+const Header = ( { handleCloseSession }) => {
+    const { usuario, setUsuario } = useContext(AppContext);
+
+    useEffect(() => { //aqui
+      const userSession = JSON.parse(sessionStorage.getItem('user'));
+      setUsuario(userSession);
+    }, [])
 
   return (
     <header className='header'>
@@ -15,7 +20,7 @@ const Header = () => {
       : `¡Qué bueno verte ${usuario.name}`}
   </h5>
   </div>
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT56WA-IDRwyiTeEae_UBc4fMB2i87RjPQ5NSI_Gi4QqgVBA1cPpZyKdAJx8t975zNaDEs&usqp=CAU" alt="imagen" />
+  <img  onClick={handleCloseSession} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT56WA-IDRwyiTeEae_UBc4fMB2i87RjPQ5NSI_Gi4QqgVBA1cPpZyKdAJx8t975zNaDEs&usqp=CAU" alt="imagen" />
   </header>
   )
 }
